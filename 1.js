@@ -1,6 +1,5 @@
 
-
-
+// Data insertion
 // db.getCollection("test").insertOne({ name: "Complete MERN Stack"})
 
 // db.getCollection("test").insertMany([
@@ -9,8 +8,18 @@
 //     ])
 
 
+
+
+
+// data deletion 
+
 // db.getCollection("test").deleteMany({})
 
+
+
+
+
+// findOne, findMany 
 
 // db.getCollection("test").findOne({age: 17})
 
@@ -39,21 +48,41 @@ const collection = db.getCollection("test");
 
 
 
+// operators
+
+// collection.find({gender: {$eq: "Female"}})
+
+
+// collection.find({age: { $eq: 17}})
+
+// collection.find({salary: { $eq: 220}}).project({name: 1})
+// collection.find({age: { $ne : 12 }})
+
+// collection.find({age: { $gt : 18 }})
+
+// collection.find({age: { $gt : 30 }})
+
+// collection.find({age: { $gte: 30}}).sort({age: 1})
+
+// lte, lt 
 
 
 
 
 
 
+// implicit and 
+// collection.find({gender: "Female", age: { $gte: 18, $lte: 30 }}, {gender: 1, age: 1}).sort({age: 1})
 
 
 
 
+//  $in, $nin 
+// collection.find({gender: "Female", age: { $in : [18, 20, 22, 24, 26, 28, 30]}}, {gender: 1, age: 1}).sort({age: 1})
 
+// collection.find({gender: "Female", age: { $nin : [18, 20, 22, 24, 26, 28, 30]}}, {gender: 1, age: 1}).sort({age: 1})
 
-
-
-
+// collection.find({gender: "Female", age: { $gte: 18, $lte: 30}, interests: { $in : ["Cooking", "Gaming"]}}, { age: 1, gender: 1, interests: 1}).sort({age: 1})
 
 
 
