@@ -348,5 +348,41 @@ const collection = db.getCollection("test");
 // )
 
 
+// $set on object 
+// collection.updateOne(
+//     { "_id" : new ObjectId("6406ad63fc13ae5a40000065")},
+//     { $set : { 
+//         "address.street" : "KC Road", 
+//         "address.city" : "Dhaka",
+//         "address.country" : "Bangladesh"
+//     } }
+// )
+
+// object or array of objects update  
+// collection.updateOne(
+//     { "_id" : new ObjectId("6406ad64fc13ae5a4000006e"), "education.major" : "Music"}, 
+//     { $set : {
+//         "education.$.major" : "CSE"
+//     } }
+// )
+
+
+
+
+
+// $inc operator 
+collection.updateOne(
+    { "_id" : new ObjectId("6406ad64fc13ae5a4000006e" ) }, 
+    { $inc : {
+        age: 4
+    } }
+)
+
+
+
+
+
+
+
 
 
