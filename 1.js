@@ -90,6 +90,123 @@ const collection = db.getCollection("test");
 
 
 
+// explicit and, $and 
+// age must be (less than or equal to 30) and (age must not be 15) 
+
+// collection.find(
+//     { age: { $lte: 30, $ne: 15}}
+// ).project(
+//     {age: 1}
+// ).sort({age: 1})
+
+// error 
+// collection.find(
+//     { age: { $lte: 30}, age: { $ne: 30}}
+// ).project(
+//     {age: 1}
+// ).sort({age: 1})
+
+// collection.find( 
+//     {$and: [
+//         {age: { $ne: 15}},
+//         {age: { $lte: 30}}
+//         ]}
+// ).project(
+//     {age: 1}
+// ).sort(
+//     {age: 1}
+// )
+
+// explicit or , $or 
+// collection.find( 
+//     {$or: [
+//         { gender: "Female"},
+//         {age: { $ne: 15}},
+//         {age: { $lte: 30}}
+//     ]}
+// ).project(
+//     {gender: 1, age: 1}
+// ).sort({age: 1})
+
+// interest in Travelling or Cooking 
+// collection.find({
+//     $or: [
+//       {interests: "Travelling"}, 
+//       {interests: "Cooking"}
+//     ]
+// }).project(
+//     {interests: 1}
+// )
+
+// must have skills Javascript or Python 
+// collection.find({
+//     $or : [
+//         {"skills.name" : "JAVASCRIPT"},
+//         {"skills.name" : "PYTHON"}
+//     ]
+// }).project(
+//     {skills: 1}
+// )
+// the upper code is same as: 
+collection.find({
+    "skills.name" : { 
+        $in : ["JAVASCRIPT", "PYTHON"]}
+    
+}).project(
+    {skills: 1}
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
