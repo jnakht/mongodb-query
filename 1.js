@@ -371,16 +371,23 @@ const collection = db.getCollection("test");
 
 
 // $inc operator 
-collection.updateOne(
-    { "_id" : new ObjectId("6406ad64fc13ae5a4000006e" ) }, 
-    { $inc : {
-        age: 4
-    } }
-)
+// collection.updateOne(
+//     { "_id" : new ObjectId("6406ad64fc13ae5a4000006e" ) }, 
+//     { $inc : {
+//         age: 4
+//     } }
+// )
 
 
 
 
+// delete a single doc 
+// collection.deleteOne({"_id" : new ObjectId("6406ad64fc13ae5a4000006e")})
+
+
+// deleting a collection 
+// db.createCollection("posts")
+db.posts.drop({ writeConcern : { w : 1 } } )
 
 
 
