@@ -232,25 +232,62 @@ const collection = db.getCollection("test");
 //   }
 // ).project({skills : 1})
 
-collection.find({
-    skills: 
-    { $elemMatch : 
-        {name: "JAVASCRIPT", level: "Intermidiate"}
-    }}
-).project(
-    {skills: 1}
+// collection.find({
+//     skills: 
+//     { $elemMatch : 
+//         {name: "JAVASCRIPT", level: "Intermidiate"}
+//     }}
+// ).project(
+//     {skills: 1}
+// )
+
+
+
+
+
+
+
+
+// update 
+// collection.updateOne({"_id": new ObjectId("6406ad63fc13ae5a40000065")}, {  $set : {age: 80}})
+// collection.updateOne({"_id": new ObjectId("6406ad63fc13ae5a40000065")}, {  $set : {interests: ["Cooking", "Writing", "Reading"]}})
+
+// collection.updateOne(
+//     {"_id": new ObjectId("6406ad63fc13ae5a40000065")},
+//     {  $addToSet : 
+//         {interests: ["Cooking", "Writing", "Reading"]}
+//     }
+// )
+
+// collection.updateOne(
+//     {"_id": new ObjectId("6406ad63fc13ae5a40000065")},
+//     {  $addToSet : 
+//         {interests: "Gaming"}
+//     }
+// )
+
+// collection.updateOne(
+//     {"_id": new ObjectId("6406ad63fc13ae5a40000065")},
+//     {  $addToSet : 
+//         {interests: "Cooking"}
+//     }
+// )
+
+// collection.updateOne(
+//     {"_id": new ObjectId("6406ad63fc13ae5a40000065")},
+//     {  $addToSet : 
+//         {interests: { $each: ["Traveling", "Shitposting", "Reading"]}}
+//     }
+// )
+
+
+// $push 
+collection.updateOne(
+    {"_id": new ObjectId("6406ad63fc13ae5a40000065")},
+    {  $push : 
+        {interests: { $each: ["Traveling", "Shitposting", "Reading"]}}
+    }
 )
-
-
-
-
-
-
-
-
-
-
-
 
 
 
