@@ -148,23 +148,43 @@ const collection = db.getCollection("test");
 //     {skills: 1}
 // )
 // the upper code is same as: 
-collection.find({
-    "skills.name" : { 
-        $in : ["JAVASCRIPT", "PYTHON"]}
+// collection.find({
+//     "skills.name" : { 
+//         $in : ["JAVASCRIPT", "PYTHON"]}
     
-}).project(
-    {skills: 1}
-)
+// }).project(
+//     {skills: 1}
+// )
 
 
 
 
+// check if a field exists or not 
+// collection.find({age: {$exists: true}})
+// collection.find({age: {$exists : false}})
+// collection.find({company: {$exists: true}}) // identifies as exits even if the filed has null valu 
+
+
+
+/*check the type of a field*/
+// collection.find({age: { $type : "string"}})
+// collection.find({age: { $type : "number"}})
+// collection.find({company: { $type : "null"}})
 
 
 
 
+// finding size of an array 
+// returns the data where number of friends are 4 
+// collection.find(
+//     {friends : { $size: 4}
+// }).project({friends: 1})
 
-
+// collection.find(
+//     {friends: { $size: 0}
+// }).project(
+//     {friends : 1}
+// )
 
 
 
