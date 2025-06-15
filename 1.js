@@ -282,34 +282,70 @@ const collection = db.getCollection("test");
 
 
 // $push 
-collection.updateOne(
-    {"_id": new ObjectId("6406ad63fc13ae5a40000065")},
-    {  $push : 
-        {interests: { $each: ["Traveling", "Shitposting", "Reading"]}}
-    }
-)
+// collection.updateOne(
+//     {"_id": new ObjectId("6406ad63fc13ae5a40000065")},
+//     {  $push : 
+//         {interests: { $each: ["Traveling", "Shitposting", "Reading"]}}
+//     }
+// )
 
 
 
 
 
+// delete a field 
+// collection.updateOne(
+//     {"_id": new ObjectId("6406ad63fc13ae5a40000065")},
+//     { $unset : { birthday: 1 } }
+// )
+
+// collection.updateOne( 
+//     {"_id" : new ObjectId("6406ad63fc13ae5a40000065")},
+//     { $unset : { age: "" } }
+// )
+
+// collection.updateOne(
+//     {"_id": new ObjectId("6406ad63fc13ae5a40000065")}
+//     { $unset : { skills: 1 } }
+// )
 
 
 
 
 
+// $pop the last person from freinds array
+// collection.updateOne( 
+//     {"_id" : new ObjectId("6406ad63fc13ae5a40000065")},
+//     { $pop : { friends : 1}}
+// )
+
+// collection.updateOne( 
+//     {"_id" : new ObjectId("6406ad63fc13ae5a40000065")},
+//     { $pop : { friends : -1 } }
+// )
 
 
+// // $pull 
+// collection.updateOne( 
+//     {"_id" : new ObjectId("6406ad63fc13ae5a40000065")},
+//     { $pull : { friends : "Mir Hussain" } }
+// )
 
+// $pullAll 
+// collection.updateOne( 
+//     {"_id" : new ObjectId("6406ad63fc13ae5a40000065")},
+//     { $pullAll : { friends: [ "Fahim Ahammed Firoz", "Jisan Khan", "Nadim Hasan" ] } }
+// )
 
+// collection.updateOne(
+//     { "_id" : new ObjectId("6406ad63fc13ae5a40000065") },
+//     { $pullAll : { interests: [ "Cooking", "Writing", "Reading" ] } }
+// )
 
-
-
-
-
-
-
-
+// collection.updateOne(
+//     { "_id" : new ObjectId("6406ad63fc13ae5a40000065") },
+//     { $pull : { interests: [ "Cooking", "Writing", "Reading" ] } }
+// )
 
 
 
