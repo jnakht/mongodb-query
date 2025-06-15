@@ -189,12 +189,57 @@ const collection = db.getCollection("test");
 
 
 
+// use of $all 
+// collection.find(
+//     {"interests.2": "Writing"}
+// ).project(
+//     {interests: 1}
+// )
+
+// collection.find(
+//     {interests: ["Cooking", "Writing"]}
+// ).project({interests: 1})
+
+// collection.find(
+//     {interests: ["Cooking", "Writing", "Reading"]}
+// ).project({interests: 1})
+
+
+// collection.find(
+//     {interests: 
+//         { $all: ["Writing", "Cooking", "Gaming"]}
+//     }
+// ).project({interests: 1})
 
 
 
 
 
 
+
+
+
+
+
+//  $ElemMatch 
+// collection.find(
+//   {
+//       skills: {
+//           name: "JAVASCRIPT",
+//           level: "Intermidiate",
+//           isLearning: true
+//       }
+//   }
+// ).project({skills : 1})
+
+collection.find({
+    skills: 
+    { $elemMatch : 
+        {name: "JAVASCRIPT", level: "Intermidiate"}
+    }}
+).project(
+    {skills: 1}
+)
 
 
 
