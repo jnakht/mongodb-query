@@ -75,9 +75,39 @@ const collection = db.getCollection("test");
 // )
 
 
-collection.aggregate(
-    { $group : { _id : "$address.country", count : { $sum : 1 }, fullDoc : { $push : "$$ROOT"} } }, 
-    { $project : { count : 1, "fullDoc.email" : 1, "fullDoc.phone" : 1, "fullDoc.gender" : 1, "fullDoc.age" : 1 } }
+// collection.aggregate(
+//     { $group : { _id : "$address.country", count : { $sum : 1 }, fullDoc : { $push : "$$ROOT"} } }, 
+//     { $project : { count : 1, "fullDoc.email" : 1, "fullDoc.phone" : 1, "fullDoc.gender" : 1, "fullDoc.age" : 1 } }
+// )
+
+
+// collection.aggregate(
+//     { $group : { 
+//         _id : null, 
+//         count :  { $sum : 1 }, 
+//         totalSalary : { $sum : "$salary" }, 
+//         maxSalary : { $max : "$salary" }
+//     } } 
+    
+// )
+
+collection.aggregate( 
+    { $group : { 
+        _id : null,
+        count : { $sum : 1 }, 
+        totalSalary : { $sum : "$salary" }, 
+        maxSalary : { $max : "$salary" },
+        minSalary : { $min : "$salary" },
+        avgSalary : { $avg : "$salary" }
+    } }, 
+    { $project : {
+        count : 1, 
+        totalSalary : "$totalSalary",
+        maximumSalary : "$maxSalary",
+        minimumSalary : "$minSalary",
+        averageSalary : "$avgSalary",
+        rangeOnMinAndMax : { $subtract : [ "$maxSalary", "$minSalary" ] }
+    }}
 )
 
 
