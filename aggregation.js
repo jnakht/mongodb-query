@@ -156,31 +156,31 @@ const collection = db.getCollection("test");
 
 
 // $facet 
-collection.aggregate(
-    { $facet : {
-        "friendsCount": [
-            { $unwind : "$friends" },
-            { $group : {
-                _id : "$friends",
-                count : { $sum : 1 } 
-            } }
-        ],
-        "educationCount": [
-            { $unwind : "$education" },
-            { $group: {
-                _id : "$education",
-                count : { $sum : 1 }
-            }}
-        ],
-        "skillsCount": [
-            { $unwind : "$skills" },
-            { $group : {
-                _id: "$skills",
-                count : { $sum : 1 }
-            }}
-        ]
-    }}    
-)
+// collection.aggregate(
+//     { $facet : {
+//         "friendsCount": [
+//             { $unwind : "$friends" },
+//             { $group : {
+//                 _id : "$friends",
+//                 count : { $sum : 1 } 
+//             } }
+//         ],
+//         "educationCount": [
+//             { $unwind : "$education" },
+//             { $group: {
+//                 _id : "$education",
+//                 count : { $sum : 1 }
+//             }}
+//         ],
+//         "skillsCount": [
+//             { $unwind : "$skills" },
+//             { $group : {
+//                 _id: "$skills",
+//                 count : { $sum : 1 }
+//             }}
+//         ]
+//     }}    
+// )
 
 
 
