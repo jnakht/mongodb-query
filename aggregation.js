@@ -44,25 +44,41 @@ const collection = db.getCollection("test");
 
 
 // adding in the original database
-collection.aggregate( 
-    { $match : { gender : "Male" } }, 
-    { $addFields: { course : "Level - 2", eduTech : "Programming Hero", salary : 500 } },
-    { $merge : "test" }
+// collection.aggregate( 
+//     { $match : { gender : "Male" } }, 
+//     { $addFields: { course : "Level - 2", eduTech : "Programming Hero", salary : 500 } },
+//     { $merge : "test" }
+// )
+
+
+
+// $group 
+// collection.aggregate(
+//     { $group : { _id : "$gender", count : { $sum : 1} } }    
+// )
+
+
+// collection.aggregate(
+//     { $group : { _id : "$age", number_of_person : { $sum : 1 } } }    
+// )
+
+// collection.aggregate(
+//     { $group : { _id : "$address.country",  count : { $sum : 1 } } }
+// )
+
+// collection.aggregate(
+//     { $group : { _id : "$address.country", count : { $sum : 1 },  nameDekhan : { $push : "name" } } }
+// )
+
+// collection.aggregate(
+//     { $group : { _id : "$address.country", count : { $sum : 1 }, nameArray : { $push : "$name" } } }    
+// )
+
+
+collection.aggregate(
+    { $group : { _id : "$address.country", count : { $sum : 1 }, fullDoc : { $push : "$$ROOT"} } }, 
+    { $project : { count : 1, "fullDoc.email" : 1, "fullDoc.phone" : 1, "fullDoc.gender" : 1, "fullDoc.age" : 1 } }
 )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
