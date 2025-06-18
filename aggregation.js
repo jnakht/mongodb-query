@@ -139,20 +139,61 @@ const collection = db.getCollection("test");
 //     } }
 // ])
 
-collection.aggregate([
-    { $bucket : {
-        groupBy : "$age",
-        boundaries : [20, 40, 60, 80],
-        default : "age from 80 to greater",
-        output : {
-            count : { $sum : 1},
-            // allName : { $push : "$name"}, 
-            allPersonOfRange : { $push : "$$ROOT"}
-        }
-    } },
-    { $sort : { count : -1 } },
-    { $project : { count : 1 } }
-])
+// collection.aggregate([
+//     { $bucket : {
+//         groupBy : "$age",
+//         boundaries : [20, 40, 60, 80],
+//         default : "age from 80 to greater",
+//         output : {
+//             count : { $sum : 1},
+//             // allName : { $push : "$name"}, 
+//             allPersonOfRange : { $push : "$$ROOT"}
+//         }
+//     } },
+//     { $sort : { count : -1 } },
+//     { $project : { count : 1 } }
+// ])
+
+
+// $facet 
+collection.aggregate(
+    { $facet : {
+        "friendsCount": [
+            { $unwind : "$friends" },
+            { $group : {
+                _id : "$friends",
+                count : { $sum : 1 } 
+            } }
+        ],
+        "educationCount": [
+            { $unwind : "$education" },
+            { $group: {
+                _id : "$education",
+                count : { $sum : 1 }
+            }}
+        ],
+        "skillsCount": [
+            { $unwind : "$skills" },
+            { $group : {
+                _id: "$skills",
+                count : { $sum : 1 }
+            }}
+        ]
+    }}    
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
