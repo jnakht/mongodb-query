@@ -91,24 +91,43 @@ const collection = db.getCollection("test");
     
 // )
 
+// collection.aggregate( 
+//     { $group : { 
+//         _id : null,
+//         count : { $sum : 1 }, 
+//         totalSalary : { $sum : "$salary" }, 
+//         maxSalary : { $max : "$salary" },
+//         minSalary : { $min : "$salary" },
+//         avgSalary : { $avg : "$salary" }
+//     } }, 
+//     { $project : {
+//         count : 1, 
+//         totalSalary : "$totalSalary",
+//         maximumSalary : "$maxSalary",
+//         minimumSalary : "$minSalary",
+//         averageSalary : "$avgSalary",
+//         rangeOnMinAndMax : { $subtract : [ "$maxSalary", "$minSalary" ] }
+//     }}
+// )
+
+
+
+// $unwind 
+// collection.aggregate( 
+//     { $unwind : "$friends" },
+//     { $group : { _id : "$friends", count : { $sum : 1 } } }
+// )
+
+
+// find common interests based on age field 
 collection.aggregate( 
-    { $group : { 
-        _id : null,
-        count : { $sum : 1 }, 
-        totalSalary : { $sum : "$salary" }, 
-        maxSalary : { $max : "$salary" },
-        minSalary : { $min : "$salary" },
-        avgSalary : { $avg : "$salary" }
-    } }, 
-    { $project : {
-        count : 1, 
-        totalSalary : "$totalSalary",
-        maximumSalary : "$maxSalary",
-        minimumSalary : "$minSalary",
-        averageSalary : "$avgSalary",
-        rangeOnMinAndMax : { $subtract : [ "$maxSalary", "$minSalary" ] }
-    }}
+   // { $unwind : "$interests" }, 
+    { $group : { _id : "$age", interestIn : { $push : "$interests" } } }
 )
+
+
+
+
 
 
 
