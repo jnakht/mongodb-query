@@ -120,15 +120,39 @@ const collection = db.getCollection("test");
 
 
 // find common interests based on age field 
-collection.aggregate( 
-   // { $unwind : "$interests" }, 
-    { $group : { _id : "$age", interestIn : { $push : "$interests" } } }
-)
+// collection.aggregate( 
+//   // { $unwind : "$interests" }, 
+//     { $group : { _id : "$age", interestIn : { $push : "$interests" } } }
+// )
 
+// $bucket 
+// collection.aggregate([
+//     { $bucket : {
+//         groupBy : "$age",
+//         boundaries : [20, 40, 60, 80],
+//         default : "age from 80 to greater",
+//         output : {
+//             count : { $sum : 1},
+//             // allName : { $push : "$name"}, 
+//             allPersonOfRange : { $push : "$$ROOT"}
+//         }
+//     } }
+// ])
 
-
-
-
+collection.aggregate([
+    { $bucket : {
+        groupBy : "$age",
+        boundaries : [20, 40, 60, 80],
+        default : "age from 80 to greater",
+        output : {
+            count : { $sum : 1},
+            // allName : { $push : "$name"}, 
+            allPersonOfRange : { $push : "$$ROOT"}
+        }
+    } },
+    { $sort : { count : -1 } },
+    { $project : { count : 1 } }
+])
 
 
 
