@@ -49,16 +49,45 @@ const collection = db.getCollection("test");
 
 
 
+// implicit and 
+// collection.find({ 
+//     gender: { $eq : "Female"}, 
+//     age : { $gte : 18, $lte : 30 }
+// }).sort({
+//     age : 1 
+    
+// }).project({
+//     age : 1,
+//     gender : 1
+// })
 
 
 
 
+//  $in
+// collection.find({
+//     gender : { $eq : "Female" },
+//     age : { $in : [18, 20, 22, 24, 26, 28, 30]}
+// }).project({
+//     gender : 1,
+//     age : 1
+// }).sort({
+//     age : 1
+// })
 
 
-
-
-
-
+// $nin
+// collection.find({
+//     gender : { $eq : "Female" },
+//     age : { $nin : [18, 20, 22, 24, 26, 28, 30]},
+//     interests : { $in : ["Cooking", "Gaming"]}
+// }).project({
+//     gender : 1,
+//     age : 1,
+//     interests : 1
+// }).sort({
+//     age : 1
+// })
 
 
 
