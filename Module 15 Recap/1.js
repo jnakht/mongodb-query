@@ -92,6 +92,79 @@ const collection = db.getCollection("test");
 
 
 
+// explicit and, implicit and, explicit or, implicit or
+// collection.find({
+//     $and : [
+//         {age : { $ne : 15 } }, 
+//         {age : { $lte : 30 } }
+//     ]
+// }).project({
+//     age : 1
+// }).sort({
+//     age : 1
+// })
+
+
+
+// collection.find({age : { $ne : 15 }, age : { $lte : 30 } } ) //error
+
+// collection.find({
+//     age : { $ne : 15, $lte : 30 } 
+    
+// } ).project({
+//     age : 1
+// }).sort({
+//     age : 1
+// })
+
+
+
+// interests in Traveling or interests in Cooking 
+// collection.find({
+//     $or : [
+//         { interests : "Cooking" }, 
+//         { interests : "Traveling" },
+//     ]
+// }).project({
+//     interests : 1
+// })
+
+
+// collection.find({
+//     $or : [
+//         { "skills.name" : "JAVASCRIPT" },
+//         { "skills.name" : "PYTHON" }
+//     ]
+// }).project({
+//     skills : 1
+// })
+
+
+
+// collection.find({
+//     "skills.name" : { $in : ["JAVASCRIPT", "PYTHON"] }
+// }).project({
+//     skills : 1
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
