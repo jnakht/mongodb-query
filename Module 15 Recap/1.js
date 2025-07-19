@@ -150,6 +150,114 @@ const collection = db.getCollection("test");
 
 
 
+// collection.find({
+//     company : { $exists : false }
+// })
+
+// collection.find({
+//     company : { $exists : true }
+// }).project({
+//     company : 1
+// })
+
+// collection.find({
+//     age : { $exists : false }
+// })
+
+
+
+// collection.find({
+//     email : { $exists : false }
+// })
+
+// collection.find({
+//     skills : { $exists : false }
+// })
+
+// collection.find({
+//     age : { $type : "string" }
+// })
+
+
+// collection.find({
+//     friends : { $type : "array" }
+// })
+
+
+// collection.find({
+//     salary : { $type : "number" }
+// })
+
+// collection.find({
+//     company : { $type : "null" }
+// }).project({
+//     company : 1
+// })
+
+
+// collection.find({
+//     friends : { $size : 4 }
+// }).project({
+//     friends : 1
+// })
+
+// collection.find({
+//     friends : { $size : 4 }
+// }).project({
+//     friends : 1
+// })
+
+// collection.find({
+//     friends : { $size : 0 }
+// }).project({
+//     friends : 1
+// })
+
+// only works with array
+// collection.find({
+//     email : { $size : 24 }
+// }).project({
+//     email : 1 
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
