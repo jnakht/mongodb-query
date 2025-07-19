@@ -329,10 +329,20 @@ const collection = db.getCollection("test");
 // )
 
 
+// collection.updateOne(
+//     { _id : ObjectId("6406ad63fc13ae5a40000069") }, 
+//     { $unset : {
+//       birthday : 1  
+//     } }
+// )
 
 
-
-
+collection.updateOne( 
+    { _id : ObjectId("6406ad63fc13ae5a40000069") },
+    { $unset : {
+        age : ""
+    }}
+)
 
 
 
