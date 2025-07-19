@@ -221,24 +221,64 @@ const collection = db.getCollection("test");
 // })
 
 
+// collection.find({
+//     interests : ["Gaming", "Cooking", "Writing" ]
+// }).project({
+//     interests : 1
+// })
+
+// collection.find({
+//     "interests.2" : "Writing"
+// }).project({
+//     interests : 1
+// })
 
 
+// collection.find({
+//     interests : { $all : ["Travelling", "Cooking"]}
+// }).project({
+//     interests : 1
+// })
 
 
+// will not work as expected
+// collection.find({
+//     "skills.name" : "JAVASCRIPT",
+//     "skills.level" : "Intermidiate"
+// }).project({
+//     skills : 1
+// })
 
 
+// collection.find({
+//     skills : {
+//         name : "JAVASCRIPT",
+//         level : "Intermidiate",
+//         isLearning : false
+//     }
+// })
 
 
+// collection.find({
+//     $and : [
+//         {"skills.name" : "JAVASCRIPT" }, 
+//         {"skills.level" : "Intermidiate" }
+//     ]
+// }).project({
+//     skills: 1
+// })
 
 
-
-
-
-
-
-
-
-
+collection.find({
+    skills : {
+        $elemMatch : {
+            name : "JAVASCRIPT",
+            level : "Intermidiate"
+        }
+    }
+}).project({
+    skills : 1
+})
 
 
 
