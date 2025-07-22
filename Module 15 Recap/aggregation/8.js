@@ -5,9 +5,9 @@
 // db.massiveDataAgain.find({"email" : "gofffrye@flexigen.com"}).explain("executionStats")
 
 
-db.massiveDataAgain.createIndex({email : 1}) // email : 1, means ascending order, email : -1 means descending 
+// db.massiveDataAgain.createIndex({email : 1}) // email : 1, means ascending order, email : -1 means descending 
 
-
+db.massiveDataAgain.dropIndex({email : 1})
 
 
 
